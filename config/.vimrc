@@ -3,7 +3,9 @@ set nocompatible " be iMproved
 " For vundle
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+"call vundle#rc()
+
+call vundle#begin()
 
 " Dependencies of snipmate
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -40,6 +42,16 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-dispatch'
 
 Bundle 'plasticboy/vim-markdown'
+
+
+" Configuration for golang
+Plugin 'fatih/vim-go'
+
+" Auto Complete the typing
+Plugin 'Valloric/YouCompleteMe'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 
 
 set tags=./tags; " Set tags directory
