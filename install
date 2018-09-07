@@ -1,0 +1,44 @@
+#!/bin/bash
+
+##############################################################
+#                                                            #
+#                Author: Keon Ye                             #
+#                Date: 2018-09-07                            #
+#                                                            #
+##############################################################
+
+
+options=('.vimrc' '.zshrc' 'auto_deploy')
+
+if echo "${options[@]}" | grep -w "$1" &>/dev/null; then
+  case "$1" in
+    ".vimrc")
+      echo ==  Copy the .vimrc file into your home directory  ==
+      # ls -a ~ | grep .vimrc
+      # Backup the original file
+      mv ~/.vimrc ~/.vimrc.backup
+      cp ./config/.vimrc ~/.vimrc
+      ;;
+    ".zshrc")
+      echo == Copy the .zshrc file into your home directory  ==
+      # ls -a ~ | grep .zshrc
+      # Backup the original file
+      mv ~/.zshrc ~/.zshrc.backup
+      cp ./config/.zshrc ~/.zshrc
+      ;;
+    "auto_deploy")
+      echo ==  Install the auto_deploy command into your system  ==
+      cp ./deploy/auto_deploy /usr/local/bin/
+      ;;
+      *)
+      echo Sorry. Unknow option
+      ;;
+  esac
+
+  echo "Installed vim configuration successfully! Enjoy :)"
+else
+  echo "Usage: ./install <options>"
+  echo "       <options> can be '.vimrc', '.zshrc' or 'auto_deploy'"
+  exit 1
+fi
+
