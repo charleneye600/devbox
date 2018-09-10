@@ -1,5 +1,104 @@
 #!/bin/bash
 
 echo =================================
-echo Hi, I am auto_deploy programming.
+echo Hi, I am auto_deploy program.
 echo =================================
+
+if [[ $1 = "help"  ]]; then
+	echo "Usage: auto_deploy <target_branch> <environment>"
+	echo "       <target_branch> can be 'master', 'develop' or 'feature/user-login-and-logout', default use the current branch "
+	echo "       <environment> can be 'dev', 'staging' or 'production', default use the 'dev' environment "
+	exit 1
+fi
+
+if [[ $# -eq 0 ]]; then
+	current_branch=`git branch | awk '/\*/ { print $2;  }'`
+	target_branch=$current_branch
+	environment='dev'
+elif [[ $# -eq 1 ]]; then
+	if [[ $1 = 'dev' ]] || [[ $1 = 'staging' ]] || [[ $1 = 'production' ]]; then
+		current_branch=`git branch | awk '/\*/ { print $2;   }'`
+		target_branch=$current_branch
+		environment=$1
+	else
+		target_branch=$1
+		environment='dev'
+	fi
+elif [[ $# -eq 2 ]]; then
+	if [[ $2 = 'dev' ]] || [[ $2 = 'staging' ]] || [[ $2 = 'production' ]]; then
+		environment=$2
+		target_branch=$1
+	else
+		echo "Your parameter is wrong."
+	fi
+else
+	echo '=============  The number of the parameter is wrong  ============='
+fi
+
+echo "Question: Are you in your workspace now?  (Y/n):  "
+read answer
+
+case $answer in
+	"Y" | "y" | "yes" | "Yes" | "YES")
+
+		echo "Switch the current branch to cn-develop branch"
+		git checkout cn-develop
+
+		echo fetch the original branch into the local environment
+		git pull
+
+		echo "pull the cn-develop branch into the local enviroment"
+		git pull origin cn-develop
+
+		existing_branch=`git branch | grep $target_branch`
+
+		if [[ $existing_branch != '' ]]; then
+			echo =================================
+			echo "Delete the local branch"
+			echo =================================
+			git branch -D $target_branch
+		fi
+
+		echo "Switch the current branch to the $target_branch branch"
+		git checkout -b $target_branch origin/$target_branch
+
+		echo "Merge the cn-develop into the $target_branch branch"
+		git merge origin/cn-develop
+
+		conflict=`git status | grep "both added:"`
+
+		if [[ $conflict != '' ]]; then
+			echo ========= Need to solve the conflict =========
+			exit 1
+		fi
+
+		echo "Push the local branch to the repository"
+		git push origin $target_branch
+
+		echo "Deploy the $target_branch branch to the $environment environment"
+
+		if [[ $environment = 'dev' ]]; then
+			deploy_env='cn_staging2'
+		elif [[ $environment = 'staging' ]]; then
+			deploy_env='cn_staging'
+		else
+			deploy_env='production'
+		fi
+
+		echo ============================
+		echo $deploy_env
+		echo $target_branch
+		echo ============================
+
+		cap $deploy_env deploy -s branch=$target_branch
+		;;
+	"N" | "n" | "NO" | "No" | "no")
+		echo =========== Exit the programming ===========
+		;;
+	*)
+		echo Sorry! The session will be terminated later due to the wrong answer.
+		echo exiting...
+		sleep 3s
+		exit
+esac
+
