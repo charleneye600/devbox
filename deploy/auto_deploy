@@ -65,7 +65,7 @@ case $answer in
 		echo "Merge the cn-develop into the $target_branch branch"
 		git merge origin/cn-develop
 
-		conflict=`git status | grep "both added:"`
+		conflict=`git status | grep "both"`
 
 		if [[ $conflict != '' ]]; then
 			echo ========= Need to solve the conflict =========
