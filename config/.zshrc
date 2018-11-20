@@ -4,6 +4,16 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/stavenvanderbilt/.oh-my-zsh"
 
+
+
+
+# Curl is configured to use SSL, but we have not been able to determine which SSL backend it is using. Please see PycURL documentation for how to specify the SSL backend manually.
+# http://pycurl.io/docs/latest/install.html
+# https://www.cnblogs.com/yoyo008/p/9356074.html
+export LDFLAGS=-L/usr/local/opt/openssl/lib
+export CPPFLAGS=-I/usr/local/opt/openssl/include
+export PYCURL_SSL_LIBRARY=openssl
+
 # configure for the letote project
 export COUNTRY_CODE='CN'
 
@@ -105,14 +115,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+# ssh the server machine
+alias sshvpntops="ssh -p 29824 deploy@vpn.tops.com"
+alias sshwwwtops="ssh deploy@prod.tops.com"
+
 # aliases related to the rails
 alias test="bundle exec rspec"
-alias rsc="bundle exec rails c"
-alias rsct="RAILS_ENV=test bundle exec rails c"
-alias rss="bundle exec rails s -b 0.0.0.0 -p 3000"
-alias rsg="bundle exec rails g"
-alias rsgmi="bundle exec rails g migration"
-alias rsgmo="bundle exec rails g model"
+alias rc="bundle exec rails c"
+alias rct="RAILS_ENV=test bundle exec rails c"
+alias rs="bundle exec rails s -b 0.0.0.0 -p 3000"
+alias rg="bundle exec rails g"
+alias rgmi="bundle exec rails g migration"
+alias rgmo="bundle exec rails g model"
 alias rdcmt="RAILS_ENV=test bundle exec rake db:drop db:create db:migrate"
 alias rdct="RAILS_ENV=test bundle exec rake db:drop db:create"
 alias rdt="RAILS_ENV=test bundle exec rake db:drop"
@@ -123,4 +138,22 @@ alias rdcd="RAILS_ENV=development bundle exec rake db:drop db:create"
 alias rdd="RAILS_ENV=development bundle exec rake db:drop"
 alias rcd="RAILS_ENV=development bundle exec rake db:create"
 alias rmd="RAILS_ENV=development bundle exec rake db:migrate"
+alias bi="bundle install"
+
+
+# setting the terminal to use the proxy
+alias proxy='export all_proxy=socks5://127.0.0.1:1080'
+alias unproxy='unset all_proxy'
+
+# Alias
+alias t="cd ~/workspace/letote"
+
+# configuration for pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# the pyenv-virtualenv plugin for pyenv
+
+# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
