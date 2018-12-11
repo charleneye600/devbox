@@ -74,6 +74,12 @@ nmap <Leader><CR> :nohlsearch<cr>
 
 
 " ================== NERDTree Configurations ====================
+" Configure the menu navigator for Linux
+" let g:NERDTreeDirArrowExpandable = '>'
+" let g:NERDTreeDirArrowCollapsible = 'v'
+
+" solve the ^G in the NerdTree explorer
+let g:NERDTreeNodeDelimiter = "\u00a0"
 "设定 NERDTree 视窗大小
 let g:NERDTreeWinSize = 30
 map <F8> :NERDTree <CR>
