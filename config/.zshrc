@@ -157,6 +157,10 @@ alias unproxy='unset all_proxy'
 # Alias
 alias t="cd ~/workspace/letote"
 
+
+
+alias clear_swap="rm -rf /Users/stavenvanderbilt/.vim/swap/*"
+
 # dos2unix and unix2dos tool to convert the "\r" or "\n" or "\r\n" for Linux, windows and mac OS
 # find ./ -type f -print0 | xargs -0 dos2unix
 # find ./ -type f print0 | xargs -0 sed -i 's/^M$//'
@@ -176,5 +180,5 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Configuration for the `grep` command
-export GREP_OPTIONS='--color=auto --exclude-dir=log --exclude-dir=spec'
+export GREP_OPTIONS='--color=auto --exclude-dir=log'
 
