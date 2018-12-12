@@ -6,6 +6,8 @@ export ZSH="/Users/stavenvanderbilt/.oh-my-zsh"
 
 
 
+export NVM_DIR="$HOME/.nvm"
+alias active_nvm='. "/usr/local/opt/nvm/nvm.sh"'
 
 # Curl is configured to use SSL, but we have not been able to determine which SSL backend it is using. Please see PycURL documentation for how to specify the SSL backend manually.
 # http://pycurl.io/docs/latest/install.html
@@ -141,12 +143,26 @@ alias rmd="RAILS_ENV=development bundle exec rake db:migrate"
 alias bi="bundle install"
 
 
+alias sshltdev="ssh ubuntu@letote-dev"
+alias sshltdevbg="ssh ubuntu@letote-dev-bg"
+alias sshltstaging="ssh ubuntu@letote-staging"
+alias sshltstagingbg="ssh ubuntu@letote-staging-bg"
+alias sshkafkadev="ssh ubuntu@kafka-dev"
+
+
 # setting the terminal to use the proxy
 alias proxy='export all_proxy=socks5://127.0.0.1:1080'
 alias unproxy='unset all_proxy'
 
 # Alias
 alias t="cd ~/workspace/letote"
+
+# dos2unix and unix2dos tool to convert the "\r" or "\n" or "\r\n" for Linux, windows and mac OS
+# find ./ -type f -print0 | xargs -0 dos2unix
+# find ./ -type f print0 | xargs -0 sed -i 's/^M$//'
+alias format_dos_2_unix="find . -type f -exec dos2unix {} \;"
+
+
 
 # configuration for pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -156,4 +172,9 @@ eval "$(pyenv init -)"
 # the pyenv-virtualenv plugin for pyenv
 
 # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Configuration for the `grep` command
+export GREP_OPTIONS='--color=auto --exclude-dir=log --exclude-dir=spec'
 
