@@ -30,13 +30,16 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 " the_silver_searcher for Vim
 Bundle 'rking/ag.vim'
-
-
-
+" Run Interactive for Vim
+Bundle 'tc50cal/vim-terminal'
+" A Git wrapper for Vim
+Bundle 'tpope/vim-fugitive'
 " Ruby for Vim
-" Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-ruby/vim-ruby'
+" wisely add 'end' in ruby
+Bundle 'tpope/vim-endwise'
 " Rails for Vim
-" Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-rails.git'
 " GoLang for Vim
 " Plugin 'fatih/vim-go'
 
@@ -114,7 +117,7 @@ let NERDTreeShowHidden=1
 " ==============    FZF Search Files Vim Plugin    ==============
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>f :Files<CR>
-nmap <Leader>t :Tags<CR>
+" nmap <Leader>t :Tags<CR>
 " ===============================================================
 
 
@@ -135,4 +138,14 @@ if executable('ag')
   " Ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+" ===============================================================
+
+
+" =============         Run Interactive         =================
+" Add this to your vimrc to provide a shortcut
+nnoremap <leader>ri :Terminal<space>
+nnoremap <leader>rs :TerminalSplit<space>
+nnoremap <leader>rv :TerminalVSplit<space>
+nnoremap <leader>rt :TerminalTab<space>
+nnoremap <leader>ri :Terminal<space>
 " ===============================================================
