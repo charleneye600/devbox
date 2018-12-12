@@ -28,7 +28,8 @@ Bundle 'junegunn/fzf.vim'
 Bundle 'kien/ctrlp.vim'
 " Navigation tree for Vim
 Bundle 'scrooloose/nerdtree'
-
+" the_silver_searcher for Vim
+Bundle 'rking/ag.vim'
 
 
 
@@ -87,7 +88,6 @@ set cuc cul                      " Highlight active column
 " Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
 
-
 " ================== NERDTree Configurations ====================
 " Configure the menu navigator for Linux
 " let g:NERDTreeDirArrowExpandable = '>'
@@ -109,10 +109,30 @@ let NERDTreeShowHidden=1
 " let g:NERDTreeHidden=0
 " ===============================================================
 
-" ============== FZF Search and Replace Vim Plugin ==============
+
+
+" ==============    FZF Search Files Vim Plugin    ==============
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>f :Files<CR>
 nmap <Leader>t :Tags<CR>
 " ===============================================================
 
 
+
+" ==============       Search keyword       =====================
+let g:ackprg = 'ag --nogroup --nocolor --column'
+" for easy using sliver search
+map <leader>g :Ag
+" ===============================================================
+
+
+" ==============  Configure for the CTRLP   =====================
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files.
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+" ===============================================================
