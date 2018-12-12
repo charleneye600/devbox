@@ -3,9 +3,13 @@ set nocompatible " be iMproved
 " For vundle
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+" For fzf plugin
+set rtp+=/usr/local/opt/fzf
 
 
 call vundle#begin() " required
+
+
 
 
 
@@ -18,10 +22,15 @@ Bundle "honza/vim-snippets"
 
 " Molokai theme for Vim
 Bundle 'tomasr/molokai'
+" Search Files for Vim
+Bundle 'junegunn/fzf.vim'
 " Fuzzy finder for Vim (CTRL+P)
 Bundle 'kien/ctrlp.vim'
 " Navigation tree for Vim
 Bundle 'scrooloose/nerdtree'
+
+
+
 
 " Ruby for Vim
 " Bundle 'vim-ruby/vim-ruby'
@@ -29,6 +38,10 @@ Bundle 'scrooloose/nerdtree'
 " Bundle 'tpope/vim-rails.git'
 " GoLang for Vim
 " Plugin 'fatih/vim-go'
+
+
+
+
 
 
 
@@ -60,6 +73,8 @@ colorscheme molokai
 set nu                           " Show the number line
 let mapleader=","                " Seting thte Leader Key
 set hlsearch                     " Searching
+set ts=2
+set noexpandtab
 set incsearch
 set ignorecase
 set smartcase
@@ -83,7 +98,7 @@ let g:NERDTreeNodeDelimiter = "\u00a0"
 "设定 NERDTree 视窗大小
 let g:NERDTreeWinSize = 30
 map <F8> :NERDTree <CR>
-map <leader>t :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 " 打开vim时如果没有文件自动打开NERDTree
 autocmd vimenter * if !argc()|NERDTree|endif
 " 过滤所有.pyc文件不显示
@@ -93,4 +108,11 @@ let NERDTreeShowHidden=1
 " 不显示隐藏文件
 " let g:NERDTreeHidden=0
 " ===============================================================
+
+" ============== FZF Search and Replace Vim Plugin ==============
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
+" ===============================================================
+
 
