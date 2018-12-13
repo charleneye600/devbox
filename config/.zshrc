@@ -173,12 +173,16 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# the pyenv-virtualenv plugin for pyenv
+# the pyenv-virtualenv plugin for pyenv 
 
 # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Configuration for the `grep` command
-export GREP_OPTIONS='--color=auto --exclude-dir=log'
+
+# Configurations for Rust
+alias cc="cargo check"
+alias cb="cargo build"
+alias cr="cargo run"
+
 
