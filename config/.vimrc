@@ -30,8 +30,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 " the_silver_searcher for Vim
 Bundle 'rking/ag.vim'
-" Run Interactive for Vim
-Bundle 'tc50cal/vim-terminal'
 " A Git wrapper for Vim
 Bundle 'tpope/vim-fugitive'
 " Ruby for Vim
@@ -90,6 +88,10 @@ set cuc cul                      " Highlight active column
 
 " Remove highlights with leader + enter
 nmap <Leader><CR> :nohlsearch<cr>
+nmap <Leader>q :q!<cr>
+nmap <Leader>w :w<cr>
+nmap <Leader>wq :wq!<cr>
+nmap <Leader>s <C-W><C-W>
 
 " ================== NERDTree Configurations ====================
 " Configure the menu navigator for Linux
@@ -140,12 +142,3 @@ if executable('ag')
 endif
 " ===============================================================
 
-
-" =============         Run Interactive         =================
-" Add this to your vimrc to provide a shortcut
-nnoremap <leader>ri :Terminal<space>
-nnoremap <leader>rs :TerminalSplit<space>
-nnoremap <leader>rv :TerminalVSplit<space>
-nnoremap <leader>rt :TerminalTab<space>
-nnoremap <leader>ri :Terminal<space>
-" ===============================================================
