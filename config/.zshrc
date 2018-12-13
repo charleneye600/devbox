@@ -181,7 +181,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # Configurations for Rust
-alias cc="cargo check"
+alias cck="cargo check" # due to `cc` is used by Elang
 alias cb="cargo build"
 alias cr="cargo run"
 
