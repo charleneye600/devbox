@@ -184,5 +184,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 alias cck="cargo check" # due to `cc` is used by Elang
 alias cb="cargo build"
 alias cr="cargo run"
-
+alias cf="cargo fmt"
 
