@@ -12,8 +12,6 @@ call vundle#begin() " required
 
 
 
-
-
 " Dependencies of snipmate
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -22,12 +20,10 @@ Bundle "honza/vim-snippets"
 
 " Molokai theme for Vim
 Bundle 'tomasr/molokai'
-" Search Files for Vim
-Bundle 'junegunn/fzf.vim'
-" Fuzzy finder for Vim (CTRL+P)
-Bundle 'kien/ctrlp.vim'
 " Navigation tree for Vim
 Bundle 'scrooloose/nerdtree'
+" Search Files for Vim
+Bundle 'junegunn/fzf.vim'
 " the_silver_searcher for Vim
 Bundle 'rking/ag.vim'
 " A Git wrapper for Vim
@@ -128,17 +124,5 @@ nmap <Leader>f :Files<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 " for easy using sliver search
 map <leader>g :Ag
-" ===============================================================
-
-
-" ==============  Configure for the CTRLP   =====================
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " Ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
 " ===============================================================
 
