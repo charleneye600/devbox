@@ -1,9 +1,9 @@
 set nocompatible " be iMproved
 
+set backspace=indent,eol,start
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
-
 
 " For vundle
 filetype off
@@ -13,7 +13,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/opt/fzf
 " If installed using git
 set rtp+=~/.fzf
-
+" Configure for Ag to search
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 call vundle#begin() " required
 
@@ -79,7 +80,8 @@ colorscheme molokai
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
 
-set nu                           " Show the number line
+set nu                           " Show the line number
+set relativenumber               " Set relative line number
 let mapleader=","                " Seting thte Leader Key
 set hlsearch                     " Searching
 set ts=2
@@ -183,4 +185,3 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " for easy using sliver search
 map <leader>g :Ag<space>
 " ===============================================================
-
