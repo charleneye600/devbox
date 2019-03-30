@@ -79,9 +79,10 @@ colorscheme molokai
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
-
+" set nonu                       " Turn Off the line number
+" set nornu                      " Turn Off the relative line number
 set nu                           " Show the line number
-set relativenumber               " Set relative line number
+set rnu                          " Set relative line number
 let mapleader=","                " Seting thte Leader Key
 set hlsearch                     " Searching
 set ts=2
